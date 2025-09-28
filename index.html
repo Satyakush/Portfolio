@@ -29,6 +29,9 @@
 
   <!-- Hero Section -->
   <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 md:px-0">
+    <h1 class="text-2xl md:text-3xl font-bold mb-2 text-gray-900 border-b-4 border-[#007BFF] inline-block pb-1">
+  Satyam Kushwaha
+</h1>
     <h1 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">
       Engineering scalable systems — <span class="text-[#007BFF]">in code and in mindset.</span>
     </h1>
@@ -66,69 +69,99 @@
 
 
 
-  <!-- Projects Section -->
+<!-- Projects Section -->
 <section id="projects" class="py-20 bg-white">
   <div class="max-w-6xl mx-auto px-6">
     <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">My Projects</h2>
 
     <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-      
+
       <!-- Project Card 1 -->
-      <div class="border rounded-lg shadow hover:shadow-lg transition p-6 flex flex-col">
-        <h3 class="text-xl font-semibold mb-2">Reward-Based Crowdfunding Platform</h3>
-        <p class="text-gray-600 mb-4 flex-grow">
-          A full-stack MERN project allowing users to create and back campaigns with rewards.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="bg-[#007BFF] text-white px-2 py-1 rounded text-sm">MERN</span>
-          <span class="bg-gray-200 text-gray-800 px-2 py-1 rounded text-sm">TailwindCSS</span>
-          <span class="bg-gray-200 text-gray-800 px-2 py-1 rounded text-sm">JavaScript</span>
+      <div class="relative border border-gray-200 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 hover:shadow-xl transition duration-300 flex flex-col h-full" data-aos="fade-up">
+        
+        <!-- Image + Overlay -->
+        <div class="relative h-48 w-full">
+          <img src="Images/Crowdfunding.png" alt="Reward-Based Crowdfunding" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+            <div class="flex gap-4">
+              <a href="https://github.com/Satyakush/Reward_Based_Crowdfund_Platform" target="_blank" class="px-4 py-2 bg-[#007BFF] text-white rounded font-semibold hover:bg-blue-600">GitHub</a>
+              <a href="#" class="px-4 py-2 bg-gray-100 text-gray-900 rounded font-semibold hover:bg-gray-200">Live Demo</a>
+            </div>
+          </div>
         </div>
-        <div class="mt-auto flex gap-4">
-          <a href="https://github.com/Satyakush/Reward_Based_Crowdfund_Platform" target="_blank" class="text-[#007BFF] font-semibold hover:underline">GitHub</a>
-          <a href="#" class="text-gray-600 font-semibold hover:underline">Live Demo</a>
+
+        <!-- Card Content -->
+        <div class="p-6 flex flex-col flex-grow">
+          <h3 class="text-xl font-semibold mb-2">Reward-Based Crowdfunding</h3>
+          <p class="text-gray-600 mb-4 flex-grow">
+            Full-stack MERN platform for creating and backing campaigns.
+          </p>
+
+          <!-- Metrics -->
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-[#007BFF] text-white px-2 py-1 rounded text-sm">100+ campaigns</span>
+            <span class="bg-gray-200 text-gray-800 px-2 py-1 rounded text-sm">MERN</span>
+            <span class="bg-gray-200 text-gray-800 px-2 py-1 rounded text-sm">TailwindCSS</span>
+          </div>
         </div>
       </div>
 
       <!-- Project Card 2 -->
-      <div class="border rounded-lg shadow hover:shadow-lg transition p-6 flex flex-col">
-        <h3 class="text-xl font-semibold mb-2">Portfolio Website (Current)</h3>
-        <p class="text-gray-600 mb-4 flex-grow">
-          Minimalistic, professional portfolio showcasing skills, mindset, and projects.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="bg-[#007BFF] text-white px-2 py-1 rounded text-sm">HTML</span>
-          <span class="bg-gray-200 text-gray-800 px-2 py-1 rounded text-sm">TailwindCSS</span>
-          <span class="bg-gray-200 text-gray-800 px-2 py-1 rounded text-sm">JavaScript</span>
+      <div class="relative border border-gray-200 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 hover:shadow-xl transition duration-300 flex flex-col h-full" data-aos="fade-up" data-aos-delay="100">
+        <div class="relative h-48 w-full">
+          <img src="Images\Portfolio.webp" alt="Portfolio Website" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+            <div class="flex gap-4">
+              <a href="https://github.com/Satyakush/portfolio" target="_blank" class="px-4 py-2 bg-[#007BFF] text-white rounded font-semibold hover:bg-blue-600">GitHub</a>
+              <a href="#" class="px-4 py-2 bg-gray-100 text-gray-900 rounded font-semibold hover:bg-gray-200">Live Demo</a>
+            </div>
+          </div>
         </div>
-        <div class="mt-auto flex gap-4">
-          <a href="https://github.com/Satyakush/portfolio" target="_blank" class="text-[#007BFF] font-semibold hover:underline">GitHub</a>
-          <a href="#" class="text-gray-600 font-semibold hover:underline">Live Demo</a>
+
+        <div class="p-6 flex flex-col flex-grow">
+          <h3 class="text-xl font-semibold mb-2">Portfolio Website</h3>
+          <p class="text-gray-600 mb-4 flex-grow">
+            Minimalistic, professional portfolio showcasing skills, mindset, and projects.
+          </p>
+
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-[#007BFF] text-white px-2 py-1 rounded text-sm">Live Demo Ready</span>
+            <span class="bg-gray-200 text-gray-800 px-2 py-1 rounded text-sm">HTML</span>
+            <span class="bg-gray-200 text-gray-800 px-2 py-1 rounded text-sm">TailwindCSS</span>
+          </div>
         </div>
       </div>
 
-        <!-- Project Card 3 (NTPC ProcureHub) -->
-      <div class="border rounded-lg shadow hover:shadow-lg transition p-6 flex flex-col">
-        <h3 class="text-xl font-semibold mb-2">ProcureHub – NTPC Project</h3>
-        <p class="text-gray-600 mb-4 flex-grow">
-          Developed ProcureHub for NTPC to streamline procurement processes, improving efficiency and transparency.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="bg-[#007BFF] text-white px-2 py-1 rounded text-sm">MERN</span>
-          <span class="bg-gray-200 text-gray-800 px-2 py-1 rounded text-sm">TailwindCSS</span>
-          <span class="bg-gray-200 text-gray-800 px-2 py-1 rounded text-sm">JavaScript</span>
+      <!-- Project Card 3 -->
+      <div class="relative border border-gray-200 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 hover:shadow-xl transition duration-300 flex flex-col h-full" data-aos="fade-up" data-aos-delay="200">
+        <div class="relative h-48 w-full">
+          <img src="Images/Procurehub.webp" alt="NTPC ProcureHub" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+            <div class="flex gap-4">
+              <a href="https://github.com/Satyakush/NTPC_Project" target="_blank" class="px-4 py-2 bg-[#007BFF] text-white rounded font-semibold hover:bg-blue-600">GitHub</a>
+              <a href="#" class="px-4 py-2 bg-gray-100 text-gray-900 rounded font-semibold hover:bg-gray-200">Live Demo</a>
+            </div>
+          </div>
         </div>
-        <div class="mt-auto flex gap-4">
-          <a href="https://github.com/Satyakush/NTPC_Project.git" target="_blank" class="text-[#007BFF] font-semibold hover:underline">GitHub</a>
-          <a href="#" class="text-gray-600 font-semibold hover:underline">Live Demo</a>
+
+        <div class="p-6 flex flex-col flex-grow">
+          <h3 class="text-xl font-semibold mb-2">ProcureHub – NTPC Project</h3>
+          <p class="text-gray-600 mb-4 flex-grow">
+            Streamlined procurement processes to improve efficiency and transparency for NTPC.
+          </p>
+
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-[#007BFF] text-white px-2 py-1 rounded text-sm">Efficiency +20%</span>
+            <span class="bg-gray-200 text-gray-800 px-2 py-1 rounded text-sm">MERN</span>
+            <span class="bg-gray-200 text-gray-800 px-2 py-1 rounded text-sm">TailwindCSS</span>
+          </div>
         </div>
       </div>
-
-      <!-- Add more project cards here as needed -->
 
     </div>
   </div>
 </section>
+
 
 
 <!-- Timeline / Journey Section -->
@@ -189,23 +222,51 @@
 
     <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
 
-      <!-- Skill Card: MERN -->
+      <!-- Skill Card: Full-Stack MERN -->
       <div class="border rounded-lg shadow p-6 hover:shadow-lg transition">
         <h3 class="text-xl font-semibold mb-4">Full-Stack Development (MERN)</h3>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="text-gray-600 px-2 py-1 rounded text-sm">MongoDB</span>
-          <span class="text-gray-600 px-2 py-1 rounded text-sm">Express.js</span>
-          <span class="text-gray-600 px-2 py-1 rounded text-sm">React.js</span>
-          <span class="text-gray-600 px-2 py-1 rounded text-sm">Node.js</span>
+
+        <!-- MongoDB -->
+        <div class="mb-4">
+          <div class="flex justify-between mb-1">
+            <span>MongoDB</span>
+            <span>95%</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+            <div class="skill-bar bg-[#007BFF] h-3 w-0 transition-all duration-1000 ease-in-out" data-width="95%"></div>
+          </div>
         </div>
-        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-          <div class="bg-[#007BFF] h-3 rounded-full w-0" 
-               data-aos="slide-right" 
-               data-aos-duration="1000" 
-               data-aos-once="true" 
-               data-aos-delay="200"
-               data-aos-anchor-placement="top-bottom"
-               data-width="95%">
+
+        <!-- Express.js -->
+        <div class="mb-4">
+          <div class="flex justify-between mb-1">
+            <span>Express.js</span>
+            <span>95%</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+            <div class="skill-bar bg-[#007BFF] h-3 w-0 transition-all duration-1000 ease-in-out" data-width="95%"></div>
+          </div>
+        </div>
+
+        <!-- React.js -->
+        <div class="mb-4">
+          <div class="flex justify-between mb-1">
+            <span>React.js</span>
+            <span>95%</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+            <div class="skill-bar bg-[#007BFF] h-3 w-0 transition-all duration-1000 ease-in-out" data-width="95%"></div>
+          </div>
+        </div>
+
+        <!-- Node.js -->
+        <div class="mb-4">
+          <div class="flex justify-between mb-1">
+            <span>Node.js</span>
+            <span>95%</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+            <div class="skill-bar bg-[#007BFF] h-3 w-0 transition-all duration-1000 ease-in-out" data-width="95%"></div>
           </div>
         </div>
       </div>
@@ -213,20 +274,34 @@
       <!-- Skill Card: Java & DSA -->
       <div class="border rounded-lg shadow p-6 hover:shadow-lg transition">
         <h3 class="text-xl font-semibold mb-4">Java & DSA</h3>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="text-gray-600 px-2 py-1 rounded text-sm">Java</span>
-          <span class="text-gray-600 px-2 py-1 rounded text-sm">DSA</span>
-          <span class="text-gray-600 px-2 py-1 rounded text-sm">Algorithms</span>
-          <span class="text-gray-600 px-2 py-1 rounded text-sm">Data Structures</span>
+
+        <div class="mb-4">
+          <div class="flex justify-between mb-1">
+            <span>Java</span>
+            <span>90%</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+            <div class="skill-bar bg-[#007BFF] h-3 w-0 transition-all duration-1000 ease-in-out" data-width="90%"></div>
+          </div>
         </div>
-        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-          <div class="bg-[#007BFF] h-3 rounded-full w-0" 
-               data-aos="slide-right" 
-               data-aos-duration="1000" 
-               data-aos-once="true" 
-               data-aos-delay="200"
-               data-aos-anchor-placement="top-bottom"
-               data-width="90%">
+
+        <div class="mb-4">
+          <div class="flex justify-between mb-1">
+            <span>DSA</span>
+            <span>90%</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+            <div class="skill-bar bg-[#007BFF] h-3 w-0 transition-all duration-1000 ease-in-out" data-width="90%"></div>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <div class="flex justify-between mb-1">
+            <span>Algorithms</span>
+            <span>90%</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+            <div class="skill-bar bg-[#007BFF] h-3 w-0 transition-all duration-1000 ease-in-out" data-width="90%"></div>
           </div>
         </div>
       </div>
@@ -234,21 +309,34 @@
       <!-- Skill Card: Web & Tools -->
       <div class="border rounded-lg shadow p-6 hover:shadow-lg transition">
         <h3 class="text-xl font-semibold mb-4">Web & Tools</h3>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="text-gray-600 px-2 py-1 rounded text-sm">HTML</span>
-          <span class="text-gray-600 px-2 py-1 rounded text-sm">CSS</span>
-          <span class="text-gray-600 px-2 py-1 rounded text-sm">TailwindCSS</span>
-          <span class="text-gray-600 px-2 py-1 rounded text-sm">Git</span>
-          <span class="text-gray-600 px-2 py-1 rounded text-sm">VS Code</span>
+
+        <div class="mb-4">
+          <div class="flex justify-between mb-1">
+            <span>HTML</span>
+            <span>95%</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+            <div class="skill-bar bg-[#007BFF] h-3 w-0 transition-all duration-1000 ease-in-out" data-width="95%"></div>
+          </div>
         </div>
-        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-          <div class="bg-[#007BFF] h-3 rounded-full w-0" 
-               data-aos="slide-right" 
-               data-aos-duration="1000" 
-               data-aos-once="true" 
-               data-aos-delay="200"
-               data-aos-anchor-placement="top-bottom"
-               data-width="95%">
+
+        <div class="mb-4">
+          <div class="flex justify-between mb-1">
+            <span>CSS / Tailwind</span>
+            <span>95%</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+            <div class="skill-bar bg-[#007BFF] h-3 w-0 transition-all duration-1000 ease-in-out" data-width="95%"></div>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <div class="flex justify-between mb-1">
+            <span>Git & VS Code</span>
+            <span>95%</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+            <div class="skill-bar bg-[#007BFF] h-3 w-0 transition-all duration-1000 ease-in-out" data-width="95%"></div>
           </div>
         </div>
       </div>
@@ -256,6 +344,7 @@
     </div>
   </div>
 </section>
+
 
 <!-- Contact / Call-to-Action Section -->
 <section id="contact" class="py-20 bg-gray-50">
@@ -265,7 +354,7 @@
 
     <div class="flex flex-wrap justify-center gap-4">
       <!-- Download Resume -->
-      <a href="https://drive.google.com/uc?export=download&id=1JMstaFkM2ou03lZaQ4Ul6jDzI5kh_ptT" 
+      <a href="https://drive.google.com/file/d/1KiQjM38JM1NcoPO6fPZrDSoGCzeKTrlr/view?usp=drive_link" 
    target="_blank" 
    class="px-6 py-3 bg-[#007BFF] text-white font-semibold rounded-lg hover:bg-blue-600 transition">
    Download Resume
@@ -299,13 +388,24 @@
     offset: 100 // trigger animation when element is 100px from viewport
   });
   
-    // Animate skill bars when they scroll into view
-  document.addEventListener('aos:in', ({detail}) => {
-    if(detail.classList.contains('bg-[#007BFF]')) {
-      const targetWidth = detail.getAttribute('data-width');
-      detail.style.width = targetWidth;
-    }
-  });
+<!-- Intersection Observer Script for Skill Bars -->
+
+document.addEventListener('DOMContentLoaded', () => {
+  const bars = document.querySelectorAll('.skill-bar');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting && !entry.target.classList.contains('animated')){
+        const bar = entry.target;
+        bar.style.width = bar.getAttribute('data-width');
+        bar.classList.add('animated');
+      }
+    });
+  }, { threshold: 0.5 }); // 50% visible triggers animation
+
+  bars.forEach(bar => observer.observe(bar));
+});
+
 </script>
 
 
