@@ -3,493 +3,653 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Satyam Kushwaha Portfolio</title>
+  <meta name="description" content="Satyam Kushwaha — Full-stack developer portfolio.">
+  <title>Satyam Kushwaha — Full-Stack Developer</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
   <style>
+    :root {
+      --bg: #05070d;
+      --panel: rgba(13, 17, 29, 0.72);
+      --line: rgba(255, 255, 255, 0.09);
+      --muted: #94a3b8;
+      --accent: #22d3ee;
+      --accent-2: #8b5cf6;
+      --text: #f8fafc;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 90px;
     }
-   
-  @keyframes fadeIn {
-    0% { opacity: 0; transform: translateX(-20px); }
-    100% { opacity: 1; transform: translateX(0); }
-  }
-  .animate-fadeIn {
-    animation: fadeIn 1s forwards;
-  }
 
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 15%, rgba(34, 211, 238, 0.09), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(139, 92, 246, 0.10), transparent 30%),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: rgba(34, 211, 238, 0.25);
+      color: white;
+    }
+
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.025;
+      z-index: 60;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+    }
+
+    .orb {
+      position: fixed;
+      width: 360px;
+      height: 360px;
+      border-radius: 999px;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(34,211,238,0.10), rgba(139,92,246,0.04) 42%, transparent 70%);
+      z-index: 1;
+      transition: left 0.12s ease-out, top 0.12s ease-out;
+    }
+
+    .glass {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .gradient-text {
+      background: linear-gradient(100deg, #f8fafc 0%, #67e8f9 45%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .gradient-border {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .gradient-border::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      background: linear-gradient(120deg, rgba(34,211,238,.5), transparent 35%, rgba(139,92,246,.45));
+      z-index: -2;
+    }
+
+    .gradient-border::after {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      background: #0b0f19;
+      z-index: -1;
+    }
+
+    .project-card {
+      transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(34, 211, 238, 0.38);
+      box-shadow: 0 24px 70px rgba(0,0,0,.38), 0 0 35px rgba(34,211,238,.08);
+    }
+
+    .project-image {
+      transition: transform .55s ease;
+    }
+
+    .project-card:hover .project-image {
+      transform: scale(1.06);
+    }
+
+    .project-overlay {
+      opacity: 0;
+      transition: opacity .35s ease;
+      background: linear-gradient(to top, rgba(5,7,13,.95), rgba(5,7,13,.25), transparent);
+    }
+
+    .project-card:hover .project-overlay {
+      opacity: 1;
+    }
+
+    .btn-primary {
+      background: linear-gradient(100deg, #0891b2, #2563eb, #7c3aed);
+      box-shadow: 0 0 28px rgba(34,211,238,.15);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(34,211,238,.20);
+    }
+
+    .nav-link {
+      color: #94a3b8;
+      transition: color .2s ease;
+    }
+
+    .nav-link:hover {
+      color: #67e8f9;
+    }
+
+    .timeline-line {
+      background: linear-gradient(to bottom, rgba(34,211,238,.7), rgba(139,92,246,.25), transparent);
+    }
+
+    .timeline-dot {
+      box-shadow: 0 0 0 5px rgba(34,211,238,.08), 0 0 24px rgba(34,211,238,.45);
+    }
+
+    .skill-bar {
+      width: 0;
+      transition: width 1.4s cubic-bezier(.22,1,.36,1);
+    }
+
+    .floating {
+      animation: floating 5s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .pulse-ring {
+      animation: pulseRing 2.8s ease-in-out infinite;
+    }
+
+    @keyframes pulseRing {
+      0%, 100% { opacity: .45; transform: scale(.98); }
+      50% { opacity: 1; transform: scale(1.02); }
+    }
+
+    .scroll-indicator {
+      animation: scrollIndicator 1.8s ease-in-out infinite;
+    }
+
+    @keyframes scrollIndicator {
+      0%, 100% { transform: translateY(0); opacity: .45; }
+      50% { transform: translateY(8px); opacity: 1; }
+    }
+
+    .section-kicker {
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: #67e8f9;
+      font-size: .72rem;
+      font-weight: 700;
+    }
+
+    .mobile-menu {
+      display: none;
+    }
+
+    .mobile-menu.open {
+      display: block;
+    }
+
+    @media (max-width: 767px) {
+      .orb {
+        width: 240px;
+        height: 240px;
+      }
+    }
   </style>
-  <link href="dist/output.css" rel="stylesheet">
-   <!-- AOS Library for scroll animations -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-
 </head>
-<body class="bg-white text-gray-900 font-sans">
 
- <!-- Hero Section -->
-<section
-  id="home"
-  class="min-h-[100svh] flex items-center justify-center px-6"
->
-  <div class="text-center max-w-5xl">
+<body>
+  <div class="noise"></div>
+  <div class="orb" id="cursorOrb"></div>
 
-    <h2 class="text-2xl md:text-3xl font-bold mb-3 text-gray-900 inline-block border-b-4 border-[#007BFF] pb-1">
-      Satyam Kushwaha
-    </h2>
-
-    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
-      Engineering scalable systems —
-      <span class="text-[#007BFF]">in code and in mindset.</span>
-    </h1>
-
-    <p class="text-lg md:text-2xl text-gray-700 mb-10 max-w-3xl mx-auto">
-      Blending full-stack development expertise with long-term leadership ambition.
-    </p>
-
-    <!-- CTA Buttons -->
-    <div class="flex flex-wrap justify-center gap-4">
-      <a href="#projects"
-        class="px-6 py-3 bg-[#007BFF] text-white font-semibold rounded-lg hover:bg-blue-600 transition">
-        View My Work
+  <header class="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
+    <nav class="glass max-w-6xl mx-auto rounded-2xl px-5 py-3 flex items-center justify-between shadow-2xl">
+      <a href="#home" class="font-black tracking-tight text-lg">
+        SK<span class="text-cyan-300">.</span>
       </a>
 
-      <a href="#timeline"
-        class="px-6 py-3 border-2 border-[#007BFF] text-[#007BFF] font-semibold rounded-lg hover:bg-[#007BFF] hover:text-white transition">
-        Explore My Journey
+      <div class="hidden md:flex items-center gap-7 text-sm font-medium">
+        <a class="nav-link" href="#home">Home</a>
+        <a class="nav-link" href="#projects">Work</a>
+        <a class="nav-link" href="#timeline">Journey</a>
+        <a class="nav-link" href="#skills">Stack</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </div>
+
+      <a href="#contact" class="hidden md:inline-flex btn-primary rounded-xl px-4 py-2 text-sm font-bold">
+        Let's talk <span class="ml-2">↗</span>
       </a>
 
-      <a href="#skills"
-        class="px-6 py-3 border-2 border-gray-900 text-gray-900 font-semibold rounded-lg hover:bg-gray-900 hover:text-white transition">
-        My Skills
-      </a>
+      <button id="menuButton" class="md:hidden glass rounded-xl px-3 py-2 text-lg" aria-label="Open navigation">
+        ☰
+      </button>
+    </nav>
 
-      <a href="#contact"
-        class="px-6 py-3 bg-[#007BFF] text-white font-semibold rounded-lg hover:bg-blue-600 transition">
-        Let's Connect
-      </a>
+    <div id="mobileMenu" class="mobile-menu glass max-w-6xl mx-auto mt-2 rounded-2xl p-4 md:hidden">
+      <div class="grid gap-2 text-sm">
+        <a class="nav-link rounded-xl px-3 py-3 hover:bg-white/5" href="#home">Home</a>
+        <a class="nav-link rounded-xl px-3 py-3 hover:bg-white/5" href="#projects">Work</a>
+        <a class="nav-link rounded-xl px-3 py-3 hover:bg-white/5" href="#timeline">Journey</a>
+        <a class="nav-link rounded-xl px-3 py-3 hover:bg-white/5" href="#skills">Stack</a>
+        <a class="nav-link rounded-xl px-3 py-3 hover:bg-white/5" href="#contact">Contact</a>
+      </div>
     </div>
+  </header>
 
-  </div>
-</section>
+  <main>
+    <section id="home" class="relative min-h-screen grid-bg overflow-hidden flex items-center">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(5,7,13,.75)_72%)]"></div>
 
-<!-- Projects Section -->
-<section id="projects" class="py-20 bg-white">
-  <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">My Projects</h2>
+      <div class="relative z-10 max-w-6xl mx-auto px-6 py-32 w-full">
+        <div class="max-w-4xl" data-aos="fade-up">
+          <div class="inline-flex items-center gap-3 glass rounded-full px-4 py-2 text-xs font-semibold text-slate-300 mb-7">
+            <span class="relative flex h-2.5 w-2.5">
+              <span class="pulse-ring absolute inline-flex h-full w-full rounded-full bg-cyan-300"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-300"></span>
+            </span>
+            OPEN TO SOFTWARE ENGINEERING OPPORTUNITIES
+          </div>
 
-    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <p class="section-kicker mb-4">Satyam Kushwaha / Full-Stack Developer</p>
 
-      <!-- Project Card 1 -->
-      <div class="relative border border-gray-200 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 hover:shadow-xl transition duration-300 flex flex-col h-full" data-aos="fade-up">
-        
-        <!-- Image + Overlay -->
-        <div class="relative h-48 w-full">
-          <img src="Images/Crowdfunding.png" alt="Reward-Based Crowdfunding" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-            <div class="flex gap-4">
-              <a href="https://github.com/Satyakush/Reward_Based_Crowdfund_Platform" target="_blank" class="px-4 py-2 bg-[#007BFF] text-white rounded font-semibold hover:bg-blue-600">GitHub</a>
-              <a href="#" class="px-4 py-2 bg-gray-100 text-gray-900 rounded font-semibold hover:bg-gray-200">Live Demo</a>
+          <h1 class="text-5xl sm:text-6xl md:text-8xl font-black tracking-[-0.055em] leading-[.92] max-w-5xl">
+            I build <span class="gradient-text">systems</span>
+            that feel as good as they perform.
+          </h1>
+
+          <p class="mt-8 text-base md:text-xl text-slate-400 max-w-2xl leading-relaxed">
+            Full-stack engineering with a systems mindset — from polished interfaces and resilient APIs to scalable architecture and problem solving.
+          </p>
+
+          <div class="mt-9 flex flex-wrap gap-3">
+            <a href="#projects" class="btn-primary rounded-xl px-6 py-3.5 font-bold text-sm">
+              Explore my work <span class="ml-2">↓</span>
+            </a>
+            <a href="#contact" class="glass rounded-xl px-6 py-3.5 font-bold text-sm text-slate-200 hover:border-cyan-300/30 transition">
+              Start a conversation <span class="ml-2 text-cyan-300">↗</span>
+            </a>
+          </div>
+
+          <div class="mt-12 flex flex-wrap gap-x-8 gap-y-3 text-xs text-slate-500 font-medium">
+            <span>01 — MERN</span>
+            <span>02 — Java + DSA</span>
+            <span>03 — REST APIs</span>
+            <span>04 — Enterprise Systems</span>
+          </div>
+        </div>
+
+        <div class="absolute right-5 bottom-24 hidden lg:block" data-aos="fade-left" data-aos-delay="250">
+          <div class="floating gradient-border rounded-3xl p-5 w-64">
+            <div class="flex items-center justify-between mb-5">
+              <span class="text-xs text-slate-500">CURRENT MODE</span>
+              <span class="text-xs text-cyan-300">BUILDING</span>
+            </div>
+            <div class="font-mono text-xs text-slate-400 space-y-2">
+              <p><span class="text-violet-400">const</span> mindset =</p>
+              <p class="pl-4 text-cyan-200">"scalable";</p>
+              <p><span class="text-violet-400">const</span> nextLevel =</p>
+              <p class="pl-4 text-cyan-200">"always";</p>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Card Content -->
-        <div class="p-6 flex flex-col flex-grow">
-          <h3 class="text-xl font-semibold mb-2">Reward-Based Crowdfunding</h3>
-          <p class="text-gray-600 mb-4 flex-grow">
-            Full-stack MERN platform for creating and backing campaigns.
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator text-slate-500 text-xs tracking-[.25em] uppercase">
+        Scroll to explore
+      </div>
+    </section>
+
+    <section id="projects" class="py-28 relative">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12" data-aos="fade-up">
+          <div>
+            <p class="section-kicker mb-3">Selected work</p>
+            <h2 class="text-4xl md:text-6xl font-black tracking-tight">Projects with a purpose.</h2>
+          </div>
+          <p class="text-slate-500 max-w-md text-sm leading-relaxed">
+            A mix of full-stack platforms, enterprise workflows, geospatial systems and machine-learning driven engineering.
           </p>
+        </div>
 
-          <!-- Metrics -->
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="bg-[#007BFF] text-white px-2 py-1 rounded text-sm">100+ campaigns</span>
-            <span class="bg-gray-200 text-gray-800 px-2 py-1 rounded text-sm">MERN</span>
-            <span class="bg-gray-200 text-gray-800 px-2 py-1 rounded text-sm">TailwindCSS</span>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <article class="project-card glass rounded-3xl overflow-hidden flex flex-col" data-aos="fade-up">
+            <div class="relative h-56 overflow-hidden">
+              <img src="Images/Crowdfunding.png" alt="Reward-Based Crowdfunding" class="project-image w-full h-full object-cover">
+              <div class="project-overlay absolute inset-0 flex items-end p-5">
+                <div class="flex gap-2">
+                  <a href="https://github.com/Satyakush/Reward_Based_Crowdfund_Platform" target="_blank" rel="noopener noreferrer" class="rounded-lg bg-white text-slate-950 px-4 py-2 text-xs font-bold">GitHub ↗</a>
+                  <a href="#" class="rounded-lg glass px-4 py-2 text-xs font-bold">Live Demo ↗</a>
+                </div>
+              </div>
+              <span class="absolute top-4 left-4 glass rounded-full px-3 py-1 text-[10px] font-bold text-cyan-200">01 / PLATFORM</span>
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <h3 class="text-xl font-bold">Reward-Based Crowdfunding</h3>
+              <p class="mt-3 text-sm text-slate-400 leading-relaxed flex-1">
+                Full-stack MERN platform for creating and backing campaigns.
+              </p>
+              <div class="mt-6 flex flex-wrap gap-2">
+                <span class="rounded-full bg-cyan-300/10 text-cyan-200 px-3 py-1 text-xs">100+ campaigns</span>
+                <span class="rounded-full bg-white/5 text-slate-400 px-3 py-1 text-xs">MERN</span>
+                <span class="rounded-full bg-white/5 text-slate-400 px-3 py-1 text-xs">TailwindCSS</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card glass rounded-3xl overflow-hidden flex flex-col" data-aos="fade-up" data-aos-delay="100">
+            <div class="relative h-56 overflow-hidden">
+              <img src="Images/disaster_alert.webp" alt="Disaster Alert Platform" class="project-image w-full h-full object-cover">
+              <div class="project-overlay absolute inset-0 flex items-end p-5">
+                <div class="flex gap-2">
+                  <a href="https://github.com/SNS-2026/disaster-alert-platform.git" target="_blank" rel="noopener noreferrer" class="rounded-lg bg-white text-slate-950 px-4 py-2 text-xs font-bold">GitHub ↗</a>
+                  <a href="#" class="rounded-lg glass px-4 py-2 text-xs font-bold">Live Demo ↗</a>
+                </div>
+              </div>
+              <span class="absolute top-4 left-4 glass rounded-full px-3 py-1 text-[10px] font-bold text-violet-200">02 / INTELLIGENCE</span>
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <h3 class="text-xl font-bold">Disaster Alert Platform</h3>
+              <p class="mt-3 text-sm text-slate-400 leading-relaxed flex-1">
+                A real-world disaster monitoring simulation combining full-stack engineering, geospatial analysis, and machine learning.
+              </p>
+              <div class="mt-6 flex flex-wrap gap-2">
+                <span class="rounded-full bg-violet-400/10 text-violet-200 px-3 py-1 text-xs">Machine Learning</span>
+                <span class="rounded-full bg-white/5 text-slate-400 px-3 py-1 text-xs">MERN</span>
+                <span class="rounded-full bg-white/5 text-slate-400 px-3 py-1 text-xs">Python</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card glass rounded-3xl overflow-hidden flex flex-col" data-aos="fade-up" data-aos-delay="200">
+            <div class="relative h-56 overflow-hidden">
+              <img src="Images/Procurehub.webp" alt="NTPC ProcureHub" class="project-image w-full h-full object-cover">
+              <div class="project-overlay absolute inset-0 flex items-end p-5">
+                <div class="flex gap-2">
+                  <a href="https://github.com/Satyakush/NTPC_Project" target="_blank" rel="noopener noreferrer" class="rounded-lg bg-white text-slate-950 px-4 py-2 text-xs font-bold">GitHub ↗</a>
+                  <a href="#" class="rounded-lg glass px-4 py-2 text-xs font-bold">Live Demo ↗</a>
+                </div>
+              </div>
+              <span class="absolute top-4 left-4 glass rounded-full px-3 py-1 text-[10px] font-bold text-cyan-200">03 / ENTERPRISE</span>
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <h3 class="text-xl font-bold">ProcureHub — NTPC Project</h3>
+              <p class="mt-3 text-sm text-slate-400 leading-relaxed flex-1">
+                Streamlined procurement processes to improve efficiency and transparency for NTPC.
+              </p>
+              <div class="mt-6 flex flex-wrap gap-2">
+                <span class="rounded-full bg-cyan-300/10 text-cyan-200 px-3 py-1 text-xs">Efficiency +20%</span>
+                <span class="rounded-full bg-white/5 text-slate-400 px-3 py-1 text-xs">MERN</span>
+                <span class="rounded-full bg-white/5 text-slate-400 px-3 py-1 text-xs">TailwindCSS</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline" class="py-28 bg-white/[0.025] border-y border-white/5">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="mb-14" data-aos="fade-up">
+          <p class="section-kicker mb-3">The journey</p>
+          <h2 class="text-4xl md:text-6xl font-black tracking-tight">Built one milestone<br class="hidden md:block"> at a time.</h2>
+        </div>
+
+        <div class="relative">
+          <div class="timeline-line absolute left-3 md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-px"></div>
+
+          <div class="relative grid md:grid-cols-2 gap-8 mb-12" data-aos="fade-right">
+            <div class="md:text-right md:pr-14">
+              <p class="text-cyan-300 font-mono text-sm">2022</p>
+              <h3 class="text-2xl font-bold mt-2">Joined IPS Academy</h3>
+              <p class="text-slate-500 mt-3 leading-relaxed text-sm">Started BTech in Computer Science, laying the foundation for full-stack development skills.</p>
+            </div>
+            <div class="hidden md:block"></div>
+            <div class="timeline-dot absolute left-3 md:left-1/2 -translate-x-1/2 top-1 w-2.5 h-2.5 rounded-full bg-cyan-300"></div>
+          </div>
+
+          <div class="relative grid md:grid-cols-2 gap-8 mb-12" data-aos="fade-left">
+            <div class="hidden md:block"></div>
+            <div class="md:pl-14">
+              <p class="text-violet-300 font-mono text-sm">2025</p>
+              <h3 class="text-2xl font-bold mt-2">NTPC Internship</h3>
+              <p class="text-slate-500 mt-3 leading-relaxed text-sm">Gained real-world exposure to enterprise systems and professional workflows.</p>
+            </div>
+            <div class="timeline-dot absolute left-3 md:left-1/2 -translate-x-1/2 top-1 w-2.5 h-2.5 rounded-full bg-violet-300"></div>
+          </div>
+
+          <div class="relative grid md:grid-cols-2 gap-8 mb-12" data-aos="fade-right">
+            <div class="md:text-right md:pr-14">
+              <p class="text-cyan-300 font-mono text-sm">2025</p>
+              <h3 class="text-2xl font-bold mt-2">Crowdfunding Platform</h3>
+              <p class="text-slate-500 mt-3 leading-relaxed text-sm">Built a full-stack MERN platform for crowdfunding campaigns with reward-based incentives.</p>
+            </div>
+            <div class="hidden md:block"></div>
+            <div class="timeline-dot absolute left-3 md:left-1/2 -translate-x-1/2 top-1 w-2.5 h-2.5 rounded-full bg-cyan-300"></div>
+          </div>
+
+          <div class="relative grid md:grid-cols-2 gap-8 mb-12" data-aos="fade-left">
+            <div class="hidden md:block"></div>
+            <div class="md:pl-14">
+              <p class="text-violet-300 font-mono text-sm">2025</p>
+              <h3 class="text-2xl font-bold mt-2">ProcureHub — NTPC</h3>
+              <p class="text-slate-500 mt-3 leading-relaxed text-sm">Developed ProcureHub to streamline procurement processes, enhancing efficiency and transparency.</p>
+            </div>
+            <div class="timeline-dot absolute left-3 md:left-1/2 -translate-x-1/2 top-1 w-2.5 h-2.5 rounded-full bg-violet-300"></div>
+          </div>
+
+          <div class="relative grid md:grid-cols-2 gap-8" data-aos="fade-right">
+            <div class="md:text-right md:pr-14">
+              <p class="text-cyan-300 font-mono text-sm">2025</p>
+              <h3 class="text-2xl font-bold mt-2">Portfolio & FAANG Readiness</h3>
+              <p class="text-slate-500 mt-3 leading-relaxed text-sm">Designed a professional portfolio to showcase skills, mindset, and projects for top tech recruiters.</p>
+            </div>
+            <div class="hidden md:block"></div>
+            <div class="timeline-dot absolute left-3 md:left-1/2 -translate-x-1/2 top-1 w-2.5 h-2.5 rounded-full bg-cyan-300"></div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Project Card 2 -->
-      <div class="relative border border-gray-200 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 hover:shadow-xl transition duration-300 flex flex-col h-full" data-aos="fade-up" data-aos-delay="100">
-        <div class="relative h-48 w-full">
-          <img src="Images\disaster_alert.webp" alt="Disaster Alert Platform" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-            <div class="flex gap-4">
-              <a href="https://github.com/SNS-2026/disaster-alert-platform.git" target="_blank" class="px-4 py-2 bg-[#007BFF] text-white rounded font-semibold hover:bg-blue-600">GitHub</a>
-              <a href="#" class="px-4 py-2 bg-gray-100 text-gray-900 rounded font-semibold hover:bg-gray-200">Live Demo</a>
+    <section id="skills" class="py-28">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="mb-12" data-aos="fade-up">
+          <p class="section-kicker mb-3">Technical arsenal</p>
+          <h2 class="text-4xl md:text-6xl font-black tracking-tight">The stack behind<br>the work.</h2>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-3">
+          <div class="glass rounded-3xl p-7" data-aos="fade-up">
+            <div class="flex items-center justify-between mb-7">
+              <h3 class="text-xl font-bold">Full-Stack / MERN</h3>
+              <span class="text-cyan-300 text-xl">01</span>
+            </div>
+
+            <div class="space-y-6">
+              <div class="skill" data-width="95%">
+                <div class="flex justify-between text-sm mb-2"><span>MongoDB</span><span class="text-slate-500">95%</span></div>
+                <div class="h-1.5 rounded-full bg-white/5 overflow-hidden"><div class="skill-bar h-full rounded-full bg-gradient-to-r from-cyan-300 to-blue-500"></div></div>
+              </div>
+              <div class="skill" data-width="95%">
+                <div class="flex justify-between text-sm mb-2"><span>Express.js</span><span class="text-slate-500">95%</span></div>
+                <div class="h-1.5 rounded-full bg-white/5 overflow-hidden"><div class="skill-bar h-full rounded-full bg-gradient-to-r from-cyan-300 to-blue-500"></div></div>
+              </div>
+              <div class="skill" data-width="95%">
+                <div class="flex justify-between text-sm mb-2"><span>React.js</span><span class="text-slate-500">95%</span></div>
+                <div class="h-1.5 rounded-full bg-white/5 overflow-hidden"><div class="skill-bar h-full rounded-full bg-gradient-to-r from-cyan-300 to-blue-500"></div></div>
+              </div>
+              <div class="skill" data-width="95%">
+                <div class="flex justify-between text-sm mb-2"><span>Node.js</span><span class="text-slate-500">95%</span></div>
+                <div class="h-1.5 rounded-full bg-white/5 overflow-hidden"><div class="skill-bar h-full rounded-full bg-gradient-to-r from-cyan-300 to-blue-500"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass rounded-3xl p-7" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex items-center justify-between mb-7">
+              <h3 class="text-xl font-bold">Java / DSA</h3>
+              <span class="text-violet-300 text-xl">02</span>
+            </div>
+
+            <div class="space-y-6">
+              <div class="skill" data-width="90%">
+                <div class="flex justify-between text-sm mb-2"><span>Java</span><span class="text-slate-500">90%</span></div>
+                <div class="h-1.5 rounded-full bg-white/5 overflow-hidden"><div class="skill-bar h-full rounded-full bg-gradient-to-r from-violet-300 to-fuchsia-500"></div></div>
+              </div>
+              <div class="skill" data-width="90%">
+                <div class="flex justify-between text-sm mb-2"><span>DSA</span><span class="text-slate-500">90%</span></div>
+                <div class="h-1.5 rounded-full bg-white/5 overflow-hidden"><div class="skill-bar h-full rounded-full bg-gradient-to-r from-violet-300 to-fuchsia-500"></div></div>
+              </div>
+              <div class="skill" data-width="90%">
+                <div class="flex justify-between text-sm mb-2"><span>Algorithms</span><span class="text-slate-500">90%</span></div>
+                <div class="h-1.5 rounded-full bg-white/5 overflow-hidden"><div class="skill-bar h-full rounded-full bg-gradient-to-r from-violet-300 to-fuchsia-500"></div></div>
+              </div>
+            </div>
+
+            <div class="mt-9 rounded-2xl bg-white/[0.035] border border-white/5 p-4">
+              <p class="font-mono text-xs text-slate-500">problem.solve()</p>
+              <p class="font-mono text-sm text-violet-200 mt-2">→ think · optimize · ship</p>
+            </div>
+          </div>
+
+          <div class="glass rounded-3xl p-7" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex items-center justify-between mb-7">
+              <h3 class="text-xl font-bold">Web / Tools</h3>
+              <span class="text-cyan-300 text-xl">03</span>
+            </div>
+
+            <div class="space-y-6">
+              <div class="skill" data-width="95%">
+                <div class="flex justify-between text-sm mb-2"><span>HTML</span><span class="text-slate-500">95%</span></div>
+                <div class="h-1.5 rounded-full bg-white/5 overflow-hidden"><div class="skill-bar h-full rounded-full bg-gradient-to-r from-cyan-300 to-blue-500"></div></div>
+              </div>
+              <div class="skill" data-width="95%">
+                <div class="flex justify-between text-sm mb-2"><span>CSS / Tailwind</span><span class="text-slate-500">95%</span></div>
+                <div class="h-1.5 rounded-full bg-white/5 overflow-hidden"><div class="skill-bar h-full rounded-full bg-gradient-to-r from-cyan-300 to-blue-500"></div></div>
+              </div>
+              <div class="skill" data-width="95%">
+                <div class="flex justify-between text-sm mb-2"><span>Git / VS Code</span><span class="text-slate-500">95%</span></div>
+                <div class="h-1.5 rounded-full bg-white/5 overflow-hidden"><div class="skill-bar h-full rounded-full bg-gradient-to-r from-cyan-300 to-blue-500"></div></div>
+              </div>
+            </div>
+
+            <div class="mt-9 flex flex-wrap gap-2">
+              <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">REST</span>
+              <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">Git</span>
+              <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">VS Code</span>
+              <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">Tailwind</span>
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="p-6 flex flex-col flex-grow">
-          <h3 class="text-xl font-semibold mb-2">Disaster Alert Platform</h3>
-          <p class="text-gray-600 mb-4 flex-grow">
-            Simulates a real-world disaster monitoring system combining full-stack engineering, geospatial analysis, and machine learning.
+    <section id="contact" class="py-28 relative overflow-hidden">
+      <div class="absolute inset-0 grid-bg opacity-50"></div>
+      <div class="relative max-w-5xl mx-auto px-6">
+        <div class="gradient-border rounded-[2rem] p-8 md:p-14 text-center" data-aos="zoom-in">
+          <p class="section-kicker mb-4">Have a challenge?</p>
+          <h2 class="text-5xl md:text-7xl font-black tracking-[-0.04em]">
+            Let's build something<br><span class="gradient-text">worth remembering.</span>
+          </h2>
+          <p class="mt-6 mx-auto max-w-2xl text-slate-400 leading-relaxed">
+            Open to opportunities, collaborations, and conversations around software engineering.
           </p>
 
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="bg-[#007BFF] text-white px-2 py-1 rounded text-sm">Machine Learning</span>
-            <span class="bg-gray-200 text-gray-800 px-2 py-1 rounded text-sm">MERN</span>
-            <span class="bg-gray-200 text-gray-800 px-2 py-1 rounded text-sm">Python</span>
+          <div class="mt-9 flex flex-wrap justify-center gap-3">
+            <a href="./Satyam_CV3.pdf" target="_blank" class="btn-primary rounded-xl px-6 py-3.5 font-bold text-sm">
+              Download Resume ↓
+            </a>
+            <a href="mailto:satykush123456789@gmail.com" class="glass rounded-xl px-6 py-3.5 font-bold text-sm hover:border-cyan-300/30 transition">
+              Email Me ↗
+            </a>
+            <a href="https://github.com/Satyakush" target="_blank" rel="noopener noreferrer" class="glass rounded-xl px-6 py-3.5 font-bold text-sm hover:border-cyan-300/30 transition">
+              GitHub ↗
+            </a>
+            <a href="https://www.linkedin.com/in/satyam-kushwaha-1aa615210" target="_blank" rel="noopener noreferrer" class="glass rounded-xl px-6 py-3.5 font-bold text-sm hover:border-cyan-300/30 transition">
+              LinkedIn ↗
+            </a>
           </div>
         </div>
       </div>
+    </section>
+  </main>
 
-      <!-- Project Card 3 -->
-      <div class="relative border border-gray-200 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 hover:shadow-xl transition duration-300 flex flex-col h-full" data-aos="fade-up" data-aos-delay="200">
-        <div class="relative h-48 w-full">
-          <img src="Images/Procurehub.webp" alt="NTPC ProcureHub" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-            <div class="flex gap-4">
-              <a href="https://github.com/Satyakush/NTPC_Project" target="_blank" class="px-4 py-2 bg-[#007BFF] text-white rounded font-semibold hover:bg-blue-600">GitHub</a>
-              <a href="#" class="px-4 py-2 bg-gray-100 text-gray-900 rounded font-semibold hover:bg-gray-200">Live Demo</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="p-6 flex flex-col flex-grow">
-          <h3 class="text-xl font-semibold mb-2">ProcureHub – NTPC Project</h3>
-          <p class="text-gray-600 mb-4 flex-grow">
-            Streamlined procurement processes to improve efficiency and transparency for NTPC.
-          </p>
-
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="bg-[#007BFF] text-white px-2 py-1 rounded text-sm">Efficiency +20%</span>
-            <span class="bg-gray-200 text-gray-800 px-2 py-1 rounded text-sm">MERN</span>
-            <span class="bg-gray-200 text-gray-800 px-2 py-1 rounded text-sm">TailwindCSS</span>
-          </div>
-        </div>
-      </div>
-
+  <footer class="border-t border-white/5 py-7">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-600">
+      <p>© 2026 Satyam Kushwaha</p>
+      <p class="font-mono">engineered with intent.</p>
     </div>
-  </div>
-</section>
-
-
-
-<!-- Timeline / Journey Section -->
-<section id="timeline" class="py-16 md:py-20 bg-gray-50">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
-      Journey Timeline
-    </h2>
-
-    <!-- Timeline -->
-    <div class="relative">
-
-      <!-- Vertical Line -->
-      <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-0 h-full w-1 bg-gray-300"></div>
-
-      <!-- ===================== ITEM ===================== -->
-      <div
-        class="relative flex items-start md:justify-start mb-12"
-        data-aos="fade-right"
-        data-aos-duration="1000"
-      >
-        <!-- Dot -->
-        <div
-          class="absolute left-4 md:left-1/2 md:-translate-x-1/2 w-4 h-4 bg-[#007BFF] rounded-full border-4 border-white z-10"
-        ></div>
-
-        <!-- Card -->
-        <div class="ml-12 md:ml-0 md:w-5/12 md:pr-12">
-          <p class="text-sm text-gray-500">2022</p>
-          <h3 class="text-xl font-semibold mt-1">
-            Joined IPS Academy
-          </h3>
-          <p class="text-gray-600 mt-2">
-            Started BTech in Computer Science, laying the foundation for
-            full-stack development skills.
-          </p>
-        </div>
-      </div>
-
-      <!-- ===================== ITEM ===================== -->
-      <div
-        class="relative flex items-start md:justify-end mb-12"
-        data-aos="fade-left"
-        data-aos-duration="1000"
-      >
-        <div
-          class="absolute left-4 md:left-1/2 md:-translate-x-1/2 w-4 h-4 bg-[#007BFF] rounded-full border-4 border-white z-10"
-        ></div>
-
-        <div class="ml-12 md:ml-0 md:w-5/12 md:pl-12">
-          <p class="text-sm text-gray-500">2025</p>
-          <h3 class="text-xl font-semibold mt-1">
-            NTPC Internship
-          </h3>
-          <p class="text-gray-600 mt-2">
-            Completed internship at NTPC, gaining real-world exposure to
-            enterprise systems and professional workflows.
-          </p>
-        </div>
-      </div>
-
-      <!-- ===================== ITEM ===================== -->
-      <div
-        class="relative flex items-start md:justify-start mb-12"
-        data-aos="fade-right"
-        data-aos-duration="1000"
-      >
-        <div
-          class="absolute left-4 md:left-1/2 md:-translate-x-1/2 w-4 h-4 bg-[#007BFF] rounded-full border-4 border-white z-10"
-        ></div>
-
-        <div class="ml-12 md:ml-0 md:w-5/12 md:pr-12">
-          <p class="text-sm text-gray-500">2025</p>
-          <h3 class="text-xl font-semibold mt-1">
-            Reward-Based Crowdfunding Platform
-          </h3>
-          <p class="text-gray-600 mt-2">
-            Built a full-stack MERN platform for crowdfunding campaigns with
-            reward-based incentives.
-          </p>
-        </div>
-      </div>
-
-      <!-- ===================== ITEM ===================== -->
-      <div
-        class="relative flex items-start md:justify-end mb-12"
-        data-aos="fade-left"
-        data-aos-duration="1000"
-      >
-        <div
-          class="absolute left-4 md:left-1/2 md:-translate-x-1/2 w-4 h-4 bg-[#007BFF] rounded-full border-4 border-white z-10"
-        ></div>
-
-        <div class="ml-12 md:ml-0 md:w-5/12 md:pl-12">
-          <p class="text-sm text-gray-500">2025</p>
-          <h3 class="text-xl font-semibold mt-1">
-            ProcureHub – NTPC Project
-          </h3>
-          <p class="text-gray-600 mt-2">
-            Developed ProcureHub to streamline procurement processes, enhancing
-            efficiency and transparency.
-          </p>
-        </div>
-      </div>
-
-      <!-- ===================== ITEM ===================== -->
-      <div
-        class="relative flex items-start md:justify-start"
-        data-aos="fade-right"
-        data-aos-duration="1000"
-      >
-        <div
-          class="absolute left-4 md:left-1/2 md:-translate-x-1/2 w-4 h-4 bg-[#007BFF] rounded-full border-4 border-white z-10"
-        ></div>
-
-        <div class="ml-12 md:ml-0 md:w-5/12 md:pr-12">
-          <p class="text-sm text-gray-500">2025</p>
-          <h3 class="text-xl font-semibold mt-1">
-            Portfolio Website & FAANG Readiness
-          </h3>
-          <p class="text-gray-600 mt-2">
-            Designed a professional portfolio to showcase skills, mindset, and
-            projects for top tech recruiters.
-          </p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Skills / Tech Stack Section -->
-<section id="skills" class="py-20 bg-white">
-  <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Skills & Tech Stack</h2>
-
-    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-
-      <!-- Skill Card: Full-Stack MERN -->
-      <div class="border rounded-lg shadow p-6 hover:shadow-lg transition">
-        <h3 class="text-xl font-semibold mb-4">Full-Stack Development (MERN)</h3>
-
-        <!-- MongoDB -->
-        <div class="mb-4">
-          <div class="flex justify-between mb-1">
-            <span>MongoDB</span>
-            <span>95%</span>
-          </div>
-          <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-            <div class="skill-bar bg-[#007BFF] h-3 w-0 transition-all duration-1000 ease-in-out" data-width="95%"></div>
-          </div>
-        </div>
-
-        <!-- Express.js -->
-        <div class="mb-4">
-          <div class="flex justify-between mb-1">
-            <span>Express.js</span>
-            <span>95%</span>
-          </div>
-          <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-            <div class="skill-bar bg-[#007BFF] h-3 w-0 transition-all duration-1000 ease-in-out" data-width="95%"></div>
-          </div>
-        </div>
-
-        <!-- React.js -->
-        <div class="mb-4">
-          <div class="flex justify-between mb-1">
-            <span>React.js</span>
-            <span>95%</span>
-          </div>
-          <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-            <div class="skill-bar bg-[#007BFF] h-3 w-0 transition-all duration-1000 ease-in-out" data-width="95%"></div>
-          </div>
-        </div>
-
-        <!-- Node.js -->
-        <div class="mb-4">
-          <div class="flex justify-between mb-1">
-            <span>Node.js</span>
-            <span>95%</span>
-          </div>
-          <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-            <div class="skill-bar bg-[#007BFF] h-3 w-0 transition-all duration-1000 ease-in-out" data-width="95%"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Skill Card: Java & DSA -->
-      <div class="border rounded-lg shadow p-6 hover:shadow-lg transition">
-        <h3 class="text-xl font-semibold mb-4">Java & DSA</h3>
-
-        <div class="mb-4">
-          <div class="flex justify-between mb-1">
-            <span>Java</span>
-            <span>90%</span>
-          </div>
-          <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-            <div class="skill-bar bg-[#007BFF] h-3 w-0 transition-all duration-1000 ease-in-out" data-width="90%"></div>
-          </div>
-        </div>
-
-        <div class="mb-4">
-          <div class="flex justify-between mb-1">
-            <span>DSA</span>
-            <span>90%</span>
-          </div>
-          <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-            <div class="skill-bar bg-[#007BFF] h-3 w-0 transition-all duration-1000 ease-in-out" data-width="90%"></div>
-          </div>
-        </div>
-
-        <div class="mb-4">
-          <div class="flex justify-between mb-1">
-            <span>Algorithms</span>
-            <span>90%</span>
-          </div>
-          <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-            <div class="skill-bar bg-[#007BFF] h-3 w-0 transition-all duration-1000 ease-in-out" data-width="90%"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Skill Card: Web & Tools -->
-      <div class="border rounded-lg shadow p-6 hover:shadow-lg transition">
-        <h3 class="text-xl font-semibold mb-4">Web & Tools</h3>
-
-        <div class="mb-4">
-          <div class="flex justify-between mb-1">
-            <span>HTML</span>
-            <span>95%</span>
-          </div>
-          <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-            <div class="skill-bar bg-[#007BFF] h-3 w-0 transition-all duration-1000 ease-in-out" data-width="95%"></div>
-          </div>
-        </div>
-
-        <div class="mb-4">
-          <div class="flex justify-between mb-1">
-            <span>CSS / Tailwind</span>
-            <span>95%</span>
-          </div>
-          <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-            <div class="skill-bar bg-[#007BFF] h-3 w-0 transition-all duration-1000 ease-in-out" data-width="95%"></div>
-          </div>
-        </div>
-
-        <div class="mb-4">
-          <div class="flex justify-between mb-1">
-            <span>Git & VS Code</span>
-            <span>95%</span>
-          </div>
-          <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-            <div class="skill-bar bg-[#007BFF] h-3 w-0 transition-all duration-1000 ease-in-out" data-width="95%"></div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- Contact / Call-to-Action Section -->
-<section id="contact" class="py-20 bg-gray-50">
-  <div class="max-w-4xl mx-auto px-6 text-center">
-    <h2 class="text-3xl md:text-4xl font-bold mb-8">Let's Connect</h2>
-    <p class="text-gray-700 mb-12 text-lg">I’m always open to new opportunities, collaborations, and networking. Reach out to me via email, LinkedIn, or download my resume to get started.</p>
-
-    <div class="flex flex-wrap justify-center gap-4">
-      <!-- Download Resume -->
-      <a href="./Satyam_CV3.pdf" 
-   target="_blank" 
-   class="px-6 py-3 bg-[#007BFF] text-white font-semibold rounded-lg hover:bg-blue-600 transition">
-   Download Resume
-</a>
-
-
-      <!-- GitHub -->
-      <a href="https://github.com/Satyakush" target="_blank" class="px-6 py-3 border-2 border-gray-900 text-gray-900 font-semibold rounded-lg hover:bg-gray-900 hover:text-white transition">
-        GitHub
-      </a>
-
-      <!-- LinkedIn -->
-      <a href="https://www.linkedin.com/in/satyam-kushwaha-1aa615210" target="_blank" class="px-6 py-3 border-2 border-gray-900 text-gray-900 font-semibold rounded-lg hover:bg-gray-900 hover:text-white transition">
-        LinkedIn
-      </a>
-
-      <!-- Email -->
-      <a href="mailto:satykush123456789@gmail.com" class="px-6 py-3 bg-[#007BFF] text-white font-semibold rounded-lg hover:bg-blue-600 transition">
-        Email Me
-      </a>
-    </div>
-  </div>
-</section>
-
-
-  
+  </footer>
 
   <script>
-  AOS.init({
-    once: true, // animate only once when scrolling down
-    offset: 100 // trigger animation when element is 100px from viewport
-  });
-  
-<!-- Intersection Observer Script for Skill Bars -->
-
-document.addEventListener('DOMContentLoaded', () => {
-  const bars = document.querySelectorAll('.skill-bar');
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting && !entry.target.classList.contains('animated')){
-        const bar = entry.target;
-        bar.style.width = bar.getAttribute('data-width');
-        bar.classList.add('animated');
-      }
+    AOS.init({
+      once: true,
+      offset: 90,
+      duration: 750,
+      easing: "ease-out-cubic"
     });
-  }, { threshold: 0.5 }); // 50% visible triggers animation
 
-  bars.forEach(bar => observer.observe(bar));
-});
+    const orb = document.getElementById("cursorOrb");
 
-</script>
+    window.addEventListener("mousemove", (event) => {
+      orb.style.left = event.clientX + "px";
+      orb.style.top = event.clientY + "px";
+    });
 
+    const menuButton = document.getElementById("menuButton");
+    const mobileMenu = document.getElementById("mobileMenu");
 
+    menuButton.addEventListener("click", () => {
+      mobileMenu.classList.toggle("open");
+    });
+
+    document.querySelectorAll("#mobileMenu a").forEach((link) => {
+      link.addEventListener("click", () => mobileMenu.classList.remove("open"));
+    });
+
+    const skillObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        entry.target.querySelectorAll(".skill").forEach((skill) => {
+          const bar = skill.querySelector(".skill-bar");
+          bar.style.width = skill.dataset.width;
+        });
+
+        skillObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.25 });
+
+    document.querySelectorAll("#skills .glass").forEach((card) => {
+      skillObserver.observe(card);
+    });
+  </script>
 </body>
 </html>
