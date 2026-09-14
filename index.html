@@ -3,28 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Satyam Kushwaha — Full-stack developer portfolio.">
+  <meta name="description" content="Satyam Kushwaha — Full-Stack Developer portfolio showcasing MERN, Java, DSA, backend, AI, and enterprise projects.">
+  <meta name="theme-color" content="#05070d">
   <title>Satyam Kushwaha — Full-Stack Developer</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
 
   <style>
     :root {
       --bg: #05070d;
       --panel: rgba(13, 17, 29, 0.72);
       --line: rgba(255, 255, 255, 0.09);
-      --muted: #94a3b8;
-      --accent: #22d3ee;
-      --accent-2: #8b5cf6;
       --text: #f8fafc;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     html {
       scroll-behavior: smooth;
@@ -45,6 +41,11 @@
     ::selection {
       background: rgba(34, 211, 238, 0.25);
       color: white;
+    }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid #67e8f9;
+      outline-offset: 3px;
     }
 
     .grid-bg {
@@ -122,13 +123,8 @@
       box-shadow: 0 24px 70px rgba(0,0,0,.38), 0 0 35px rgba(34,211,238,.08);
     }
 
-    .project-image {
-      transition: transform .55s ease;
-    }
-
-    .project-card:hover .project-image {
-      transform: scale(1.06);
-    }
+    .project-image { transition: transform .55s ease; }
+    .project-card:hover .project-image { transform: scale(1.06); }
 
     .project-overlay {
       opacity: 0;
@@ -136,9 +132,8 @@
       background: linear-gradient(to top, rgba(5,7,13,.95), rgba(5,7,13,.25), transparent);
     }
 
-    .project-card:hover .project-overlay {
-      opacity: 1;
-    }
+    .project-card:hover .project-overlay,
+    .project-card:focus-within .project-overlay { opacity: 1; }
 
     .btn-primary {
       background: linear-gradient(100deg, #0891b2, #2563eb, #7c3aed);
@@ -151,14 +146,8 @@
       box-shadow: 0 12px 35px rgba(34,211,238,.20);
     }
 
-    .nav-link {
-      color: #94a3b8;
-      transition: color .2s ease;
-    }
-
-    .nav-link:hover {
-      color: #67e8f9;
-    }
+    .nav-link { color: #94a3b8; transition: color .2s ease; }
+    .nav-link:hover { color: #67e8f9; }
 
     .timeline-line {
       background: linear-gradient(to bottom, rgba(34,211,238,.7), rgba(139,92,246,.25), transparent);
@@ -168,32 +157,21 @@
       box-shadow: 0 0 0 5px rgba(34,211,238,.08), 0 0 24px rgba(34,211,238,.45);
     }
 
-    .skill-bar {
-      width: 0;
-      transition: width 1.4s cubic-bezier(.22,1,.36,1);
-    }
-
-    .floating {
-      animation: floating 5s ease-in-out infinite;
-    }
-
-    @keyframes floating {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    .pulse-ring {
-      animation: pulseRing 2.8s ease-in-out infinite;
-    }
+    .pulse-ring { animation: pulseRing 2.8s ease-in-out infinite; }
 
     @keyframes pulseRing {
       0%, 100% { opacity: .45; transform: scale(.98); }
       50% { opacity: 1; transform: scale(1.02); }
     }
 
-    .scroll-indicator {
-      animation: scrollIndicator 1.8s ease-in-out infinite;
+    .floating { animation: floating 5s ease-in-out infinite; }
+
+    @keyframes floating {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
+
+    .scroll-indicator { animation: scrollIndicator 1.8s ease-in-out infinite; }
 
     @keyframes scrollIndicator {
       0%, 100% { transform: translateY(0); opacity: .45; }
@@ -208,30 +186,32 @@
       font-weight: 700;
     }
 
-    .mobile-menu {
-      display: none;
-    }
-
-    .mobile-menu.open {
-      display: block;
-    }
+    .mobile-menu { display: none; }
+    .mobile-menu.open { display: block; }
 
     @media (max-width: 767px) {
-      .orb {
-        width: 240px;
-        height: 240px;
+      .orb { width: 240px; height: 240px; }
+      .project-overlay { opacity: 1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="noise"></div>
-  <div class="orb" id="cursorOrb"></div>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="orb" id="cursorOrb" aria-hidden="true"></div>
 
   <header class="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
-    <nav class="glass max-w-6xl mx-auto rounded-2xl px-5 py-3 flex items-center justify-between shadow-2xl">
-      <a href="#home" class="font-black tracking-tight text-lg">
+    <nav class="glass max-w-6xl mx-auto rounded-2xl px-5 py-3 flex items-center justify-between shadow-2xl" aria-label="Primary navigation">
+      <a href="#home" class="font-black tracking-tight text-lg" aria-label="Satyam Kushwaha portfolio home">
         PORTFOLIO<span class="text-cyan-300">.</span>
       </a>
 
@@ -247,7 +227,7 @@
         Let's talk <span class="ml-2">↗</span>
       </a>
 
-      <button id="menuButton" class="md:hidden glass rounded-xl px-3 py-2 text-lg" aria-label="Open navigation">
+      <button id="menuButton" class="md:hidden glass rounded-xl px-3 py-2 text-lg" type="button" aria-label="Open navigation" aria-controls="mobileMenu" aria-expanded="false">
         ☰
       </button>
     </nav>
@@ -264,13 +244,13 @@
   </header>
 
   <main>
-    <section id="home" class="relative min-h-screen grid-bg overflow-hidden flex items-center">
+    <section id="home" class="relative min-h-screen grid-bg overflow-hidden flex items-center" aria-labelledby="hero-title">
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(5,7,13,.75)_72%)]"></div>
 
       <div class="relative z-10 max-w-6xl mx-auto px-6 py-32 w-full">
         <div class="max-w-4xl" data-aos="fade-up">
           <div class="inline-flex items-center gap-3 glass rounded-full px-4 py-2 text-xs font-semibold text-slate-300 mb-7">
-            <span class="relative flex h-2.5 w-2.5">
+            <span class="relative flex h-2.5 w-2.5" aria-hidden="true">
               <span class="pulse-ring absolute inline-flex h-full w-full rounded-full bg-cyan-300"></span>
               <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-300"></span>
             </span>
@@ -279,9 +259,8 @@
 
           <p class="section-kicker mb-4">Satyam Kushwaha / Full-Stack Developer</p>
 
-          <h1 class="text-5xl sm:text-6xl md:text-8xl font-black tracking-[-0.055em] leading-[.92] max-w-5xl">
-            I build <span class="gradient-text">systems</span>
-            that feel as good as they perform.
+          <h1 id="hero-title" class="text-5xl sm:text-6xl md:text-8xl font-black tracking-[-0.055em] leading-[.92] max-w-5xl">
+            I build <span class="gradient-text">systems</span> that feel as good as they perform.
           </h1>
 
           <p class="mt-8 text-base md:text-xl text-slate-400 max-w-2xl leading-relaxed">
@@ -289,12 +268,8 @@
           </p>
 
           <div class="mt-9 flex flex-wrap gap-3">
-            <a href="#projects" class="btn-primary rounded-xl px-6 py-3.5 font-bold text-sm">
-              Explore my work <span class="ml-2">↓</span>
-            </a>
-            <a href="#contact" class="glass rounded-xl px-6 py-3.5 font-bold text-sm text-slate-200 hover:border-cyan-300/30 transition">
-              Start a conversation <span class="ml-2 text-cyan-300">↗</span>
-            </a>
+            <a href="#projects" class="btn-primary rounded-xl px-6 py-3.5 font-bold text-sm">Explore my work <span class="ml-2">↓</span></a>
+            <a href="#contact" class="glass rounded-xl px-6 py-3.5 font-bold text-sm text-slate-200 hover:border-cyan-300/30 transition">Start a conversation <span class="ml-2 text-cyan-300">↗</span></a>
           </div>
 
           <div class="mt-12 flex flex-wrap gap-x-8 gap-y-3 text-xs text-slate-500 font-medium">
@@ -305,7 +280,7 @@
           </div>
         </div>
 
-        <div class="absolute right-5 bottom-24 hidden lg:block" data-aos="fade-left" data-aos-delay="250">
+        <div class="absolute right-5 bottom-24 hidden lg:block" data-aos="fade-left" data-aos-delay="250" aria-hidden="true">
           <div class="floating gradient-border rounded-3xl p-5 w-64">
             <div class="flex items-center justify-between mb-5">
               <span class="text-xs text-slate-500">CURRENT MODE</span>
@@ -321,28 +296,23 @@
         </div>
       </div>
 
-      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator text-slate-500 text-xs tracking-[.25em] uppercase">
-        Scroll to explore
-      </div>
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator text-slate-500 text-xs tracking-[.25em] uppercase" aria-hidden="true">Scroll to explore</div>
     </section>
 
-    <section id="projects" class="py-28 relative">
+    <section id="projects" class="py-28 relative" aria-labelledby="projects-title">
       <div class="max-w-6xl mx-auto px-6">
         <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12" data-aos="fade-up">
           <div>
             <p class="section-kicker mb-3">Selected work</p>
-            <h2 class="text-4xl md:text-6xl font-black tracking-tight">Projects with a purpose.</h2>
+            <h2 id="projects-title" class="text-4xl md:text-6xl font-black tracking-tight">Projects with a purpose.</h2>
           </div>
-          <p class="text-slate-500 max-w-md text-sm leading-relaxed">
-            A mix of full-stack platforms, enterprise workflows, geospatial systems and machine-learning driven engineering.
-          </p>
+          <p class="text-slate-500 max-w-md text-sm leading-relaxed">A mix of full-stack platforms, enterprise workflows, geospatial systems and machine-learning driven engineering.</p>
         </div>
 
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-
-         <article class="project-card glass rounded-3xl overflow-hidden flex flex-col" data-aos="fade-up" data-aos-delay="200">
+          <article class="project-card glass rounded-3xl overflow-hidden flex flex-col" data-aos="fade-up" data-aos-delay="100">
             <div class="relative h-56 overflow-hidden">
-              <img src="Images/Procurehub.webp" alt="NTPC ProcureHub" class="project-image w-full h-full object-cover">
+              <img src="Images/Procurehub.webp" alt="NTPC ProcureHub project interface" class="project-image w-full h-full object-cover" loading="lazy">
               <div class="project-overlay absolute inset-0 flex items-end p-5">
                 <div class="flex gap-2">
                   <a href="https://github.com/Satyakush/NTPC_Project" target="_blank" rel="noopener noreferrer" class="rounded-lg bg-white text-slate-950 px-4 py-2 text-xs font-bold">GitHub ↗</a>
@@ -353,57 +323,50 @@
             </div>
             <div class="p-6 flex flex-col flex-1">
               <h3 class="text-xl font-bold">ProcureHub — NTPC Project</h3>
-              <p class="mt-3 text-sm text-slate-400 leading-relaxed flex-1">
-                Streamlined procurement processes to improve efficiency and transparency for NTPC.
-              </p>
+              <p class="mt-3 text-sm text-slate-400 leading-relaxed flex-1">Streamlined procurement processes to improve efficiency and transparency for NTPC.</p>
               <div class="mt-6 flex flex-wrap gap-2">
-                <span class="rounded-full bg-cyan-300/10 text-cyan-200 px-3 py-1 text-xs">Efficiency +20%</span>
                 <span class="rounded-full bg-white/5 text-slate-400 px-3 py-1 text-xs">MERN</span>
                 <span class="rounded-full bg-white/5 text-slate-400 px-3 py-1 text-xs">TailwindCSS</span>
+                <span class="rounded-full bg-cyan-300/10 text-cyan-200 px-3 py-1 text-xs">Enterprise</span>
               </div>
             </div>
           </article>
 
-          <article class="project-card glass rounded-3xl overflow-hidden flex flex-col" data-aos="fade-up">
+          <article class="project-card glass rounded-3xl overflow-hidden flex flex-col" data-aos="fade-up" data-aos-delay="200">
             <div class="relative h-56 overflow-hidden">
-              <img src="Images/trizen-photo.png" alt="trizen-photo" class="project-image w-full h-full object-cover">
+              <img src="Images/trizen-photo.png" alt="Trizen Photo Platform project interface" class="project-image w-full h-full object-cover" loading="lazy">
               <div class="project-overlay absolute inset-0 flex items-end p-5">
                 <div class="flex gap-2">
                   <a href="https://github.com/Satyakush/trizen-photo-platform" target="_blank" rel="noopener noreferrer" class="rounded-lg bg-white text-slate-950 px-4 py-2 text-xs font-bold">GitHub ↗</a>
-                  <a href="https://trizen-photo-platform.vercel.app" target="_blank" class="rounded-lg glass px-4 py-2 text-xs font-bold">Live Demo ↗</a>
+                  <a href="https://trizen-photo-platform.vercel.app/" target="_blank" rel="noopener noreferrer" class="rounded-lg glass px-4 py-2 text-xs font-bold">Live Demo ↗</a>
                 </div>
               </div>
               <span class="absolute top-4 left-4 glass rounded-full px-3 py-1 text-[10px] font-bold text-cyan-200">02 / PLATFORM</span>
             </div>
             <div class="p-6 flex flex-col flex-1">
               <h3 class="text-xl font-bold">Trizen Photo Platform</h3>
-              <p class="mt-3 text-sm text-slate-400 leading-relaxed flex-1">
-                A full-stack photo management platform for securely uploading, organizing, and sharing memorable moments through private galleries..
-              </p>
+              <p class="mt-3 text-sm text-slate-400 leading-relaxed flex-1">A full-stack photo management platform for securely uploading, organizing, and sharing memorable moments through private galleries.</p>
               <div class="mt-6 flex flex-wrap gap-2">
-                <span class="rounded-full bg-cyan-300/10 text-cyan-200 px-3 py-1 text-xs">100+ campaigns</span>
                 <span class="rounded-full bg-white/5 text-slate-400 px-3 py-1 text-xs">MERN</span>
                 <span class="rounded-full bg-white/5 text-slate-400 px-3 py-1 text-xs">TailwindCSS</span>
+                <span class="rounded-full bg-cyan-300/10 text-cyan-200 px-3 py-1 text-xs">Photo Platform</span>
               </div>
             </div>
           </article>
 
-          <article class="project-card glass rounded-3xl overflow-hidden flex flex-col" data-aos="fade-up" data-aos-delay="100">
+          <article class="project-card glass rounded-3xl overflow-hidden flex flex-col" data-aos="fade-up" data-aos-delay="300">
             <div class="relative h-56 overflow-hidden">
-              <img src="Images/disaster_alert.webp" alt="Disaster Alert Platform" class="project-image w-full h-full object-cover">
+              <img src="Images/disaster_alert.webp" alt="Disaster Alert Platform project interface" class="project-image w-full h-full object-cover" loading="lazy">
               <div class="project-overlay absolute inset-0 flex items-end p-5">
                 <div class="flex gap-2">
-                  <a href="https://github.com/SNS-2026/disaster-alert-platform.git" target="_blank" rel="noopener noreferrer" class="rounded-lg bg-white text-slate-950 px-4 py-2 text-xs font-bold">GitHub ↗</a>
-                  <a href="#" class="rounded-lg glass px-4 py-2 text-xs font-bold">Live Demo ↗</a>
+                  <a href="https://github.com/SNS-2026/disaster-alert-platform" target="_blank" rel="noopener noreferrer" class="rounded-lg bg-white text-slate-950 px-4 py-2 text-xs font-bold">GitHub ↗</a>
                 </div>
               </div>
               <span class="absolute top-4 left-4 glass rounded-full px-3 py-1 text-[10px] font-bold text-violet-200">03 / INTELLIGENCE</span>
             </div>
             <div class="p-6 flex flex-col flex-1">
               <h3 class="text-xl font-bold">Disaster Alert Platform</h3>
-              <p class="mt-3 text-sm text-slate-400 leading-relaxed flex-1">
-                A real-world disaster monitoring simulation combining full-stack engineering, geospatial analysis, and machine learning.
-              </p>
+              <p class="mt-3 text-sm text-slate-400 leading-relaxed flex-1">A real-world disaster monitoring simulation combining full-stack engineering, geospatial analysis, and machine learning.</p>
               <div class="mt-6 flex flex-wrap gap-2">
                 <span class="rounded-full bg-violet-400/10 text-violet-200 px-3 py-1 text-xs">Machine Learning</span>
                 <span class="rounded-full bg-white/5 text-slate-400 px-3 py-1 text-xs">MERN</span>
@@ -415,15 +378,15 @@
       </div>
     </section>
 
-    <section id="timeline" class="py-28 bg-white/[0.025] border-y border-white/5">
+    <section id="timeline" class="py-28 bg-white/[0.025] border-y border-white/5" aria-labelledby="timeline-title">
       <div class="max-w-5xl mx-auto px-6">
         <div class="mb-14" data-aos="fade-up">
           <p class="section-kicker mb-3">The journey</p>
-          <h2 class="text-4xl md:text-6xl font-black tracking-tight">Built one milestone<br class="hidden md:block"> at a time.</h2>
+          <h2 id="timeline-title" class="text-4xl md:text-6xl font-black tracking-tight">Built one milestone<br class="hidden md:block"> at a time.</h2>
         </div>
 
         <div class="relative">
-          <div class="timeline-line absolute left-3 md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-px"></div>
+          <div class="timeline-line absolute left-3 md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-px" aria-hidden="true"></div>
 
           <div class="relative grid md:grid-cols-2 gap-8 mb-12" data-aos="fade-right">
             <div class="md:text-right md:pr-14">
@@ -432,7 +395,7 @@
               <p class="text-slate-500 mt-3 leading-relaxed text-sm">Started BTech in Computer Science, laying the foundation for full-stack development skills.</p>
             </div>
             <div class="hidden md:block"></div>
-            <div class="timeline-dot absolute left-3 md:left-1/2 -translate-x-1/2 top-1 w-2.5 h-2.5 rounded-full bg-cyan-300"></div>
+            <div class="timeline-dot absolute left-3 md:left-1/2 -translate-x-1/2 top-1 w-2.5 h-2.5 rounded-full bg-cyan-300" aria-hidden="true"></div>
           </div>
 
           <div class="relative grid md:grid-cols-2 gap-8 mb-12" data-aos="fade-left">
@@ -442,7 +405,7 @@
               <h3 class="text-2xl font-bold mt-2">NTPC Internship</h3>
               <p class="text-slate-500 mt-3 leading-relaxed text-sm">Gained real-world exposure to enterprise systems and professional workflows.</p>
             </div>
-            <div class="timeline-dot absolute left-3 md:left-1/2 -translate-x-1/2 top-1 w-2.5 h-2.5 rounded-full bg-violet-300"></div>
+            <div class="timeline-dot absolute left-3 md:left-1/2 -translate-x-1/2 top-1 w-2.5 h-2.5 rounded-full bg-violet-300" aria-hidden="true"></div>
           </div>
 
           <div class="relative grid md:grid-cols-2 gap-8 mb-12" data-aos="fade-right">
@@ -452,7 +415,7 @@
               <p class="text-slate-500 mt-3 leading-relaxed text-sm">Built a full-stack MERN platform for crowdfunding campaigns with reward-based incentives.</p>
             </div>
             <div class="hidden md:block"></div>
-            <div class="timeline-dot absolute left-3 md:left-1/2 -translate-x-1/2 top-1 w-2.5 h-2.5 rounded-full bg-cyan-300"></div>
+            <div class="timeline-dot absolute left-3 md:left-1/2 -translate-x-1/2 top-1 w-2.5 h-2.5 rounded-full bg-cyan-300" aria-hidden="true"></div>
           </div>
 
           <div class="relative grid md:grid-cols-2 gap-8 mb-12" data-aos="fade-left">
@@ -462,305 +425,96 @@
               <h3 class="text-2xl font-bold mt-2">ProcureHub — NTPC</h3>
               <p class="text-slate-500 mt-3 leading-relaxed text-sm">Developed ProcureHub to streamline procurement processes, enhancing efficiency and transparency.</p>
             </div>
-            <div class="timeline-dot absolute left-3 md:left-1/2 -translate-x-1/2 top-1 w-2.5 h-2.5 rounded-full bg-violet-300"></div>
+            <div class="timeline-dot absolute left-3 md:left-1/2 -translate-x-1/2 top-1 w-2.5 h-2.5 rounded-full bg-violet-300" aria-hidden="true"></div>
           </div>
 
           <div class="relative grid md:grid-cols-2 gap-8" data-aos="fade-right">
             <div class="md:text-right md:pr-14">
-              <p class="text-cyan-300 font-mono text-sm">2025</p>
-              <h3 class="text-2xl font-bold mt-2">Portfolio & FAANG Readiness</h3>
-              <p class="text-slate-500 mt-3 leading-relaxed text-sm">Designed a professional portfolio to showcase skills, mindset, and projects for top tech recruiters.</p>
+              <p class="text-cyan-300 font-mono text-sm">2026</p>
+              <h3 class="text-2xl font-bold mt-2">Portfolio & Engineering Growth</h3>
+              <p class="text-slate-500 mt-3 leading-relaxed text-sm">Built a professional portfolio to showcase software engineering skills, projects, and technical growth.</p>
             </div>
             <div class="hidden md:block"></div>
-            <div class="timeline-dot absolute left-3 md:left-1/2 -translate-x-1/2 top-1 w-2.5 h-2.5 rounded-full bg-cyan-300"></div>
+            <div class="timeline-dot absolute left-3 md:left-1/2 -translate-x-1/2 top-1 w-2.5 h-2.5 rounded-full bg-cyan-300" aria-hidden="true"></div>
           </div>
         </div>
       </div>
     </section>
 
-  <!-- Skills / Tech Stack Section -->
-<section id="skills" class="py-28">
-  <div class="max-w-6xl mx-auto px-6">
-
-    <!-- Section Header -->
-    <div class="mb-12" data-aos="fade-up">
-      <p class="section-kicker mb-3">Technical arsenal</p>
-      <h2 class="text-4xl md:text-6xl font-black tracking-tight">
-        The stack behind<br>the work.
-      </h2>
-    </div>
-
-    <!-- Tech Stack Grid -->
-    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-6">
-
-      <!-- Card 1: Full-Stack MERN -->
-      <div class="glass rounded-3xl p-7 lg:col-span-2" data-aos="fade-up">
-        <div class="flex items-center justify-between mb-7">
-          <h3 class="text-xl font-bold">Full-Stack / MERN</h3>
-          <span class="text-cyan-300 text-xl">01</span>
+    <section id="skills" class="py-28" aria-labelledby="skills-title">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="mb-12" data-aos="fade-up">
+          <p class="section-kicker mb-3">Technical arsenal</p>
+          <h2 id="skills-title" class="text-4xl md:text-6xl font-black tracking-tight">The stack behind<br>the work.</h2>
+          <p class="mt-5 max-w-2xl text-slate-500 text-sm leading-relaxed">Core technologies I use across full-stack development, backend engineering, problem solving, and AI-enabled applications.</p>
         </div>
 
-        <div class="space-y-6">
-
-          <div class="skill" data-width="95%">
-            <div class="flex justify-between text-sm mb-2">
-              <span>MongoDB</span>
-              <span class="text-slate-500">95%</span>
-            </div>
-            <div class="h-1.5 rounded-full bg-white/5 overflow-hidden">
-              <div class="skill-bar h-full rounded-full bg-gradient-to-r from-cyan-300 to-blue-500"></div>
-            </div>
-          </div>
-
-          <div class="skill" data-width="95%">
-            <div class="flex justify-between text-sm mb-2">
-              <span>Express.js</span>
-              <span class="text-slate-500">95%</span>
-            </div>
-            <div class="h-1.5 rounded-full bg-white/5 overflow-hidden">
-              <div class="skill-bar h-full rounded-full bg-gradient-to-r from-cyan-300 to-blue-500"></div>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div class="glass rounded-3xl p-7" data-aos="fade-up">
+            <div class="flex items-center justify-between mb-7"><h3 class="text-xl font-bold">Full-Stack / MERN</h3><span class="text-cyan-300 text-xl">01</span></div>
+            <div class="flex flex-wrap gap-2">
+              <span class="rounded-full bg-cyan-300/10 px-3 py-1.5 text-xs text-cyan-200">MongoDB</span>
+              <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">Express.js</span>
+              <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">React.js</span>
+              <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">Node.js</span>
+              <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">REST APIs</span>
+              <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">JWT</span>
             </div>
           </div>
 
-          <div class="skill" data-width="95%">
-            <div class="flex justify-between text-sm mb-2">
-              <span>React.js</span>
-              <span class="text-slate-500">95%</span>
+          <div class="glass rounded-3xl p-7" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex items-center justify-between mb-7"><h3 class="text-xl font-bold">Java / DSA</h3><span class="text-violet-300 text-xl">02</span></div>
+            <div class="flex flex-wrap gap-2">
+              <span class="rounded-full bg-violet-400/10 px-3 py-1.5 text-xs text-violet-200">Java</span>
+              <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">Data Structures</span>
+              <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">Algorithms</span>
+              <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">Problem Solving</span>
             </div>
-            <div class="h-1.5 rounded-full bg-white/5 overflow-hidden">
-              <div class="skill-bar h-full rounded-full bg-gradient-to-r from-cyan-300 to-blue-500"></div>
-            </div>
-          </div>
-
-          <div class="skill" data-width="95%">
-            <div class="flex justify-between text-sm mb-2">
-              <span>Node.js</span>
-              <span class="text-slate-500">95%</span>
-            </div>
-            <div class="h-1.5 rounded-full bg-white/5 overflow-hidden">
-              <div class="skill-bar h-full rounded-full bg-gradient-to-r from-cyan-300 to-blue-500"></div>
+            <div class="mt-8 rounded-2xl bg-white/[0.035] border border-white/5 p-4">
+              <p class="font-mono text-xs text-slate-500">problem.solve()</p>
+              <p class="font-mono text-sm text-violet-200 mt-2">→ think · optimize · ship</p>
             </div>
           </div>
 
-        </div>
+          <div class="glass rounded-3xl p-7" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex items-center justify-between mb-7"><h3 class="text-xl font-bold">AI / Backend</h3><span class="text-cyan-300 text-xl">03</span></div>
+            <div class="flex flex-wrap gap-2">
+              <span class="rounded-full bg-cyan-300/10 px-3 py-1.5 text-xs text-cyan-200">Python</span>
+              <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">FastAPI</span>
+              <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">Machine Learning</span>
+              <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">Generative AI</span>
+              <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">LLM APIs</span>
+            </div>
+          </div>
 
-        <div class="mt-9 flex flex-wrap gap-2">
-          <span class="rounded-full bg-cyan-300/10 px-3 py-1.5 text-xs text-cyan-200">
-            REST APIs
-          </span>
-          <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">
-            JWT
-          </span>
-          <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">
-            Backend
-          </span>
+          <div class="glass rounded-3xl p-7 md:col-span-2 lg:col-span-3" data-aos="fade-up" data-aos-delay="300">
+            <div class="flex items-center justify-between mb-7"><h3 class="text-xl font-bold">Web & Tools</h3><span class="text-violet-300 text-xl">04</span></div>
+            <div class="flex flex-wrap gap-2">
+              <span class="rounded-full bg-cyan-300/10 px-3 py-1.5 text-xs text-cyan-200">HTML</span>
+              <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">CSS</span>
+              <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">TailwindCSS</span>
+              <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">Git</span>
+              <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">GitHub</span>
+              <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">VS Code</span>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-
-      <!-- Card 2: Java & DSA -->
-      <div class="glass rounded-3xl p-7 lg:col-span-2" data-aos="fade-up" data-aos-delay="100">
-        <div class="flex items-center justify-between mb-7">
-          <h3 class="text-xl font-bold">Java / DSA</h3>
-          <span class="text-violet-300 text-xl">02</span>
-        </div>
-
-        <div class="space-y-6">
-
-          <div class="skill" data-width="90%">
-            <div class="flex justify-between text-sm mb-2">
-              <span>Java</span>
-              <span class="text-slate-500">90%</span>
-            </div>
-            <div class="h-1.5 rounded-full bg-white/5 overflow-hidden">
-              <div class="skill-bar h-full rounded-full bg-gradient-to-r from-violet-300 to-fuchsia-500"></div>
-            </div>
-          </div>
-
-          <div class="skill" data-width="90%">
-            <div class="flex justify-between text-sm mb-2">
-              <span>DSA</span>
-              <span class="text-slate-500">90%</span>
-            </div>
-            <div class="h-1.5 rounded-full bg-white/5 overflow-hidden">
-              <div class="skill-bar h-full rounded-full bg-gradient-to-r from-violet-300 to-fuchsia-500"></div>
-            </div>
-          </div>
-
-          <div class="skill" data-width="90%">
-            <div class="flex justify-between text-sm mb-2">
-              <span>Algorithms</span>
-              <span class="text-slate-500">90%</span>
-            </div>
-            <div class="h-1.5 rounded-full bg-white/5 overflow-hidden">
-              <div class="skill-bar h-full rounded-full bg-gradient-to-r from-violet-300 to-fuchsia-500"></div>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="mt-9 rounded-2xl bg-white/[0.035] border border-white/5 p-4">
-          <p class="font-mono text-xs text-slate-500">
-            problem.solve()
-          </p>
-          <p class="font-mono text-sm text-violet-200 mt-2">
-            → think · optimize · ship
-          </p>
-        </div>
-      </div>
-
-
-      <!-- Card 3: AI / Backend Engineering -->
-      <div class="glass rounded-3xl p-7 lg:col-span-2" data-aos="fade-up" data-aos-delay="200">
-        <div class="flex items-center justify-between mb-7">
-          <h3 class="text-xl font-bold">AI / Backend</h3>
-          <span class="text-cyan-300 text-xl">03</span>
-        </div>
-
-        <div class="space-y-6">
-
-          <div class="skill" data-width="85%">
-            <div class="flex justify-between text-sm mb-2">
-              <span>Python</span>
-              <span class="text-slate-500">85%</span>
-            </div>
-            <div class="h-1.5 rounded-full bg-white/5 overflow-hidden">
-              <div class="skill-bar h-full rounded-full bg-gradient-to-r from-cyan-300 to-blue-500"></div>
-            </div>
-          </div>
-
-          <div class="skill" data-width="80%">
-            <div class="flex justify-between text-sm mb-2">
-              <span>Machine Learning</span>
-              <span class="text-slate-500">80%</span>
-            </div>
-            <div class="h-1.5 rounded-full bg-white/5 overflow-hidden">
-              <div class="skill-bar h-full rounded-full bg-gradient-to-r from-violet-300 to-fuchsia-500"></div>
-            </div>
-          </div>
-
-          <div class="skill" data-width="75%">
-            <div class="flex justify-between text-sm mb-2">
-              <span>Generative AI</span>
-              <span class="text-slate-500">75%</span>
-            </div>
-            <div class="h-1.5 rounded-full bg-white/5 overflow-hidden">
-              <div class="skill-bar h-full rounded-full bg-gradient-to-r from-violet-300 to-fuchsia-500"></div>
-            </div>
-          </div>
-
-          <div class="skill" data-width="80%">
-            <div class="flex justify-between text-sm mb-2">
-              <span>FastAPI</span>
-              <span class="text-slate-500">80%</span>
-            </div>
-            <div class="h-1.5 rounded-full bg-white/5 overflow-hidden">
-              <div class="skill-bar h-full rounded-full bg-gradient-to-r from-cyan-300 to-blue-500"></div>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="mt-9 flex flex-wrap gap-2">
-          <span class="rounded-full bg-violet-400/10 px-3 py-1.5 text-xs text-violet-200">
-            LLM APIs
-          </span>
-          <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">
-            AI Integration
-          </span>
-          <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">
-            REST APIs
-          </span>
-        </div>
-      </div>
-
-
-      <!-- Card 4: Web & Tools -->
-      <div class="glass rounded-3xl p-7 lg:col-span-2 lg:col-start-3" data-aos="fade-up" data-aos-delay="300">
-        <div class="flex items-center justify-between mb-7">
-          <h3 class="text-xl font-bold">Web & Tools</h3>
-          <span class="text-violet-300 text-xl">04</span>
-        </div>
-
-        <div class="space-y-6">
-
-          <div class="skill" data-width="95%">
-            <div class="flex justify-between text-sm mb-2">
-              <span>HTML</span>
-              <span class="text-slate-500">95%</span>
-            </div>
-            <div class="h-1.5 rounded-full bg-white/5 overflow-hidden">
-              <div class="skill-bar h-full rounded-full bg-gradient-to-r from-cyan-300 to-blue-500"></div>
-            </div>
-          </div>
-
-          <div class="skill" data-width="95%">
-            <div class="flex justify-between text-sm mb-2">
-              <span>CSS / Tailwind</span>
-              <span class="text-slate-500">95%</span>
-            </div>
-            <div class="h-1.5 rounded-full bg-white/5 overflow-hidden">
-              <div class="skill-bar h-full rounded-full bg-gradient-to-r from-cyan-300 to-blue-500"></div>
-            </div>
-          </div>
-
-          <div class="skill" data-width="95%">
-            <div class="flex justify-between text-sm mb-2">
-              <span>Git / VS Code</span>
-              <span class="text-slate-500">95%</span>
-            </div>
-            <div class="h-1.5 rounded-full bg-white/5 overflow-hidden">
-              <div class="skill-bar h-full rounded-full bg-gradient-to-r from-cyan-300 to-blue-500"></div>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="mt-9 flex flex-wrap gap-2 justify-center">
-          <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">
-            Git
-          </span>
-          <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">
-            VS Code
-          </span>
-          <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">
-            Tailwind
-          </span>
-          <span class="rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-400">
-            REST
-          </span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-  <section>
-
-    <section id="contact" class="py-28 relative overflow-hidden">
+    <section id="contact" class="py-28 relative overflow-hidden" aria-labelledby="contact-title">
       <div class="absolute inset-0 grid-bg opacity-50"></div>
       <div class="relative max-w-5xl mx-auto px-6">
         <div class="gradient-border rounded-[2rem] p-8 md:p-14 text-center" data-aos="zoom-in">
           <p class="section-kicker mb-4">Have a challenge?</p>
-          <h2 class="text-5xl md:text-7xl font-black tracking-[-0.04em]">
-            Let's build something<br><span class="gradient-text">worth remembering.</span>
-          </h2>
-          <p class="mt-6 mx-auto max-w-2xl text-slate-400 leading-relaxed">
-            Open to opportunities, collaborations, and conversations around software engineering.
-          </p>
+          <h2 id="contact-title" class="text-5xl md:text-7xl font-black tracking-[-0.04em]">Let's build something<br><span class="gradient-text">worth remembering.</span></h2>
+          <p class="mt-6 mx-auto max-w-2xl text-slate-400 leading-relaxed">Open to opportunities, collaborations, and conversations around software engineering.</p>
 
           <div class="mt-9 flex flex-wrap justify-center gap-3">
-            <a href="./Satyam_CV3.pdf" target="_blank" class="btn-primary rounded-xl px-6 py-3.5 font-bold text-sm">
-              Download Resume ↓
-            </a>
-            <a href="mailto:satykush123456789@gmail.com" class="glass rounded-xl px-6 py-3.5 font-bold text-sm hover:border-cyan-300/30 transition">
-              Email Me ↗
-            </a>
-            <a href="https://github.com/Satyakush" target="_blank" rel="noopener noreferrer" class="glass rounded-xl px-6 py-3.5 font-bold text-sm hover:border-cyan-300/30 transition">
-              GitHub ↗
-            </a>
-            <a href="https://www.linkedin.com/in/satyam-kushwaha-1aa615210" target="_blank" rel="noopener noreferrer" class="glass rounded-xl px-6 py-3.5 font-bold text-sm hover:border-cyan-300/30 transition">
-              LinkedIn ↗
-            </a>
+            <a href="./Satyam_CV3.pdf" target="_blank" rel="noopener noreferrer" class="btn-primary rounded-xl px-6 py-3.5 font-bold text-sm">View Resume ↗</a>
+            <a href="mailto:satykush123456789@gmail.com" class="glass rounded-xl px-6 py-3.5 font-bold text-sm hover:border-cyan-300/30 transition">Email Me ↗</a>
+            <a href="https://github.com/Satyakush" target="_blank" rel="noopener noreferrer" class="glass rounded-xl px-6 py-3.5 font-bold text-sm hover:border-cyan-300/30 transition">GitHub ↗</a>
+            <a href="https://www.linkedin.com/in/satyam-kushwaha-1aa615210" target="_blank" rel="noopener noreferrer" class="glass rounded-xl px-6 py-3.5 font-bold text-sm hover:border-cyan-300/30 transition">LinkedIn ↗</a>
           </div>
         </div>
       </div>
@@ -775,46 +529,37 @@
   </footer>
 
   <script>
-    AOS.init({
-      once: true,
-      offset: 90,
-      duration: 750,
-      easing: "ease-out-cubic"
-    });
+    window.addEventListener("DOMContentLoaded", () => {
+      if (window.AOS) {
+        AOS.init({ once: true, offset: 90, duration: 750, easing: "ease-out-cubic" });
+      }
 
-    const orb = document.getElementById("cursorOrb");
+      const orb = document.getElementById("cursorOrb");
+      if (orb && window.matchMedia("(pointer: fine)").matches) {
+        window.addEventListener("mousemove", (event) => {
+          orb.style.left = `${event.clientX}px`;
+          orb.style.top = `${event.clientY}px`;
+        }, { passive: true });
+      }
 
-    window.addEventListener("mousemove", (event) => {
-      orb.style.left = event.clientX + "px";
-      orb.style.top = event.clientY + "px";
-    });
+      const menuButton = document.getElementById("menuButton");
+      const mobileMenu = document.getElementById("mobileMenu");
 
-    const menuButton = document.getElementById("menuButton");
-    const mobileMenu = document.getElementById("mobileMenu");
-
-    menuButton.addEventListener("click", () => {
-      mobileMenu.classList.toggle("open");
-    });
-
-    document.querySelectorAll("#mobileMenu a").forEach((link) => {
-      link.addEventListener("click", () => mobileMenu.classList.remove("open"));
-    });
-
-    const skillObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-
-        entry.target.querySelectorAll(".skill").forEach((skill) => {
-          const bar = skill.querySelector(".skill-bar");
-          bar.style.width = skill.dataset.width;
+      if (menuButton && mobileMenu) {
+        menuButton.addEventListener("click", () => {
+          const isOpen = mobileMenu.classList.toggle("open");
+          menuButton.setAttribute("aria-expanded", String(isOpen));
+          menuButton.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
         });
 
-        skillObserver.unobserve(entry.target);
-      });
-    }, { threshold: 0.25 });
-
-    document.querySelectorAll("#skills .glass").forEach((card) => {
-      skillObserver.observe(card);
+        mobileMenu.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.remove("open");
+            menuButton.setAttribute("aria-expanded", "false");
+            menuButton.setAttribute("aria-label", "Open navigation");
+          });
+        });
+      }
     });
   </script>
 </body>
