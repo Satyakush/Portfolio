@@ -189,9 +189,22 @@
     .mobile-menu { display: none; }
     .mobile-menu.open { display: block; }
 
+    @media (max-width: 1023px) {
+      .orb { width: 280px; height: 280px; }
+    }
+
     @media (max-width: 767px) {
-      .orb { width: 240px; height: 240px; }
+      .orb { width: 220px; height: 220px; }
       .project-overlay { opacity: 1; }
+      .project-card:hover { transform: none; }
+      .project-image { transform: none !important; }
+      section[id] { scroll-margin-top: 80px; }
+    }
+
+    @media (max-width: 639px) {
+      .glass { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+      .project-card { border-radius: 1.25rem; }
+      .project-card .relative.h-56 { height: 13rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -209,7 +222,7 @@
   <div class="noise" aria-hidden="true"></div>
   <div class="orb" id="cursorOrb" aria-hidden="true"></div>
 
-  <header class="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
+  <header class="fixed top-0 left-0 right-0 z-50 px-3 sm:px-4 pt-3 sm:pt-4">
     <nav class="glass max-w-6xl mx-auto rounded-2xl px-5 py-3 flex items-center justify-between shadow-2xl" aria-label="Primary navigation">
       <a href="#home" class="font-black tracking-tight text-lg" aria-label="Satyam Kushwaha portfolio home">
         PORTFOLIO<span class="text-cyan-300">.</span>
@@ -299,17 +312,17 @@
       <div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator text-slate-500 text-xs tracking-[.25em] uppercase" aria-hidden="true">Scroll to explore</div>
     </section>
 
-    <section id="projects" class="py-28 relative" aria-labelledby="projects-title">
+    <section id="projects" class="py-20 sm:py-24 lg:py-28 relative" aria-labelledby="projects-title">
       <div class="max-w-6xl mx-auto px-6">
         <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12" data-aos="fade-up">
           <div>
             <p class="section-kicker mb-3">Selected work</p>
-            <h2 id="projects-title" class="text-4xl md:text-6xl font-black tracking-tight">Projects with a purpose.</h2>
+            <h2 id="projects-title" class="text-3xl sm:text-4xl md:text-6xl font-black tracking-tight">Projects with a purpose.</h2>
           </div>
           <p class="text-slate-500 max-w-md text-sm leading-relaxed">A mix of full-stack platforms, enterprise workflows, geospatial systems and machine-learning driven engineering.</p>
         </div>
 
-        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
           <article class="project-card glass rounded-3xl overflow-hidden flex flex-col" data-aos="fade-up" data-aos-delay="100">
             <div class="relative h-56 overflow-hidden">
               <img src="Images/Procurehub.webp" alt="NTPC ProcureHub project interface" class="project-image w-full h-full object-cover" loading="lazy">
@@ -354,7 +367,7 @@
             </div>
           </article>
 
-          <article class="project-card glass rounded-3xl overflow-hidden flex flex-col" data-aos="fade-up" data-aos-delay="400">
+          <article class="project-card glass rounded-3xl overflow-hidden flex flex-col lg:col-start-2" data-aos="fade-up" data-aos-delay="400">
             <div class="relative h-56 overflow-hidden">
               <img src="Images/crowdfund.png" alt="CrowdFund reward-based crowdfunding platform" class="project-image w-full h-full object-cover" loading="lazy">
               <div class="project-overlay absolute inset-0 flex items-end p-5">
